@@ -1,0 +1,30 @@
+{
+  "name": "nodebb-plugin-twilio",
+  "version": "0.0.1",
+  "description": "Mobile verification for NodeBB using Twilio",
+  "main": "library.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/psychobunny/nodebb-plugin-twilio"
+  },
+  "keywords": [
+    "nodebb",
+    "plugin",
+    "twilio",
+    "mobile",
+    "sms",
+    "verification"
+  ],
+  "author": {
+    "name": "psychobunny",
+    "email": "psycho.bunny@hotmail.com"
+  },
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/psychobunny/nodebb-plugin-twilio/issues"
+  },
+  "readmeFilename": "README.md",
+  "dependencies": {
+    "twilio": "^1.6.0"
+  }
+}

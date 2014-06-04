@@ -1,0 +1,40 @@
+{
+	"id": "nodebb-plugin-twilio",
+	"name": "Mobile verification for NodeBB using Twilio",
+	"description": "Mobile verification for NodeBB using Twilio",
+	"url": "https://github.com/NodeBB/nodebb-plugin-twilio",
+	"library": "./library.js",
+	"hooks": [
+		{
+			"hook": "action:app.load", "method": "init", "priority": 5
+		},
+		{
+			"hook": "filter:user.verify.code", "method": "generateCode", "priority": 5
+		},
+		{
+			"hook": "action:user.verify", "method": "verifyUser", "priority": 5
+		},
+		{
+			"hook": "filter:register.build", "method": "addCaptcha", "priority": 5
+		},
+		{
+			"hook": "filter:user.custom_fields", "method": "setMobileNumber", "priority": 5
+		},
+		{
+			"hook": "filter:admin.header.build", "method": "addAdminNavigation", "priority": 5
+		},
+		{
+			"hook": "filter:register.complete", "method": "redirectToConfirm", "priority": 5
+		}
+	],
+	"staticDirs": {
+		"static": "./static"
+	},
+	"less": [
+		"static/style.less"
+	],
+	"scripts": [
+		"static/lib/main.js"
+	],
+	"templates": "./templates"
+}
