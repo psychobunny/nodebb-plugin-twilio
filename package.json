@@ -1,6 +1,6 @@
 {
   "name": "nodebb-plugin-twilio",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Mobile verification for NodeBB using Twilio",
   "main": "library.js",
   "repository": {
