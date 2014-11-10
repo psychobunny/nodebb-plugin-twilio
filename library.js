@@ -21,12 +21,18 @@ function renderAdmin(req, res, next) {
 	res.render('admin/twilio', {});
 }
 
-plugin.init = function(app, middleware, controllers) {
+plugin.init = function(params, callback) {
+	var app = params.app,
+		middleware = params.middleware,
+		controllers = params.controllers;
+		
 	app.get('/verify', middleware.buildHeader, renderConfirm);
 	app.get('/api/verify', renderConfirm);
 
 	app.get('/admin/twilio', middleware.admin.buildHeader, renderAdmin);
 	app.get('/api/admin/twilio', renderAdmin);
+
+	callback();
 };
 
 plugin.generateCode = function(code, callback) {
