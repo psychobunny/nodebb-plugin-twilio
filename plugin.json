@@ -6,25 +6,25 @@
 	"library": "./library.js",
 	"hooks": [
 		{
-			"hook": "static:app.load", "method": "init",
+			"hook": "static:app.load", "method": "init"
 		},
 		{
-			"hook": "filter:user.verify.code", "method": "generateCode",
+			"hook": "filter:user.verify.code", "method": "generateCode"
 		},
 		{
-			"hook": "action:user.verify", "method": "verifyUser",
+			"hook": "action:user.verify", "method": "verifyUser"
 		},
 		{
-			"hook": "filter:register.build", "method": "addCaptcha",
+			"hook": "filter:register.build", "method": "addCaptcha"
 		},
 		{
-			"hook": "filter:user.custom_fields", "method": "setMobileNumber",
+			"hook": "filter:user.custom_fields", "method": "setMobileNumber"
 		},
 		{
-			"hook": "filter:admin.header.build", "method": "addAdminNavigation",
+			"hook": "filter:admin.header.build", "method": "addAdminNavigation"
 		},
 		{
-			"hook": "filter:register.complete", "method": "redirectToConfirm",
+			"hook": "filter:register.complete", "method": "redirectToConfirm"
 		}
 	],
 	"staticDirs": {
