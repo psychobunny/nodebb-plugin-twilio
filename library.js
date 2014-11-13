@@ -40,19 +40,20 @@ plugin.generateCode = function(code, callback) {
 	callback(null, parseInt(Math.random() * Math.pow(10, length), 10));
 };
 
-plugin.redirectToConfirm = function(uid, destination, callback) {
-	callback(null, uid, nconf.get('relative_path') + '/verify');
+plugin.redirectToConfirm = function(params, callback) {
+	params.referrer = nconf.get('relative_path') + '/verify';
+	callback(null, params);
 };
 
-plugin.verifyUser = function(uid, data, callback) {
+plugin.verifyUser = function(params, callback) {
 	var accountSid = meta.config['twilio:sid'],
 		authToken = meta.config['twilio:token'];
 
 	var client = require('twilio')(accountSid, authToken);
 
-	user.getUserField(uid, 'mobileNumber', function(err, mobileNumber) {
+	user.getUserField(params.uid, 'mobileNumber', function(err, mobileNumber) {
 		client.messages.create({
-			body: 'Welcome to ' + data.site_title + '! Your access code is: ' + data.confirm_code,
+			body: 'Welcome to ' + params.data.site_title + '! Your access code is: ' + params.data.confirm_code,
 			to: mobileNumber,
 			from: meta.config['twilio:from']
 		}, function(err, message) {
@@ -67,13 +68,13 @@ plugin.verifyUser = function(uid, data, callback) {
 	});
 };
 
-plugin.addCaptcha = function(req, res, data, callback) {
-	data.captcha = {
+plugin.addCaptcha = function(params, callback) {
+	params.data.captcha = {
 		label: 'Mobile Number (for verification)',
 		html: '<input class="form-control" type="text" placeholder="Phone Number" name="mobileNumber" id="mobileNumber" />'
-	}
+	};
 
-	callback(null, req, res, data);
+	callback(null, params);
 };
 
 plugin.setMobileNumber = function(userData, callback) {
